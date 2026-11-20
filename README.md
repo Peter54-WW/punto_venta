@@ -46,7 +46,7 @@ test/
 
 Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
 
-![Rojo: las pruebas no compilan](capturas/01_rojo_no_compila.png)
+![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -59,7 +59,7 @@ cents = int.parse(partes[1]);      // ❌ "12.5" → 12 pesos y 5 centavos
 El cajero escribe `12.5` y el sistema cobra **$12.05** en lugar de **$12.50**. Es el "error clásico de principiante"
 que el manual pide vigilar; la prueba lo atrapó (esperaba 1250, obtuvo 1205) y también el reto `.5` → 50:
 
-![Error atrapado por la prueba](capturas/02_error.png)
+![Error atrapado por la prueba](captura/02_error.png)
 
 **Corrección:** rellenar a dos dígitos antes de convertir:
 
@@ -71,11 +71,11 @@ final c = int.tryParse(partes[1].padRight(2, '0').substring(0, 2));   // ✅ "5"
 
 Con las pruebas en verde se ordenó el código y `flutter analyze` quedó sin avisos:
 
-![Analyze limpio](capturas/04_analyze_limpio.png)
+![Analyze limpio](captura/04_analyze_limpio.png)
 
 ### 4. 🟢 VERDE — las 33 pruebas pasan
 
-![Verde: todas las pruebas pasan](capturas/05_verde_pruebas.png)
+![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
 
 ### 5. 📦 Compilación del APK
 
