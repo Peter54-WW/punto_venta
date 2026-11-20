@@ -27,7 +27,7 @@ El APK es para teléfonos **arm64** (prácticamente todos los Android de los úl
 
 ## 🏗️ Estructura
 
-```
+```text
 lib/
 ├── dominio/        dinero · producto · carrito (IVA, cambio, descuento) · venta · excepciones   (Dart puro)
 ├── datos/          base_datos · repositorio_productos · repositorio_ventas (transacción, corte, más vendidos)
@@ -44,9 +44,7 @@ test/
 
 ### 1. 🔴 ROJO — las pruebas se escriben primero y fallan
 
-Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
-
-![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
+Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila.
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -57,9 +55,7 @@ cents = int.parse(partes[1]);      // ❌ "12.5" → 12 pesos y 5 centavos
 ```
 
 El cajero escribe `12.5` y el sistema cobra **$12.05** en lugar de **$12.50**. Es el "error clásico de principiante"
-que el manual pide vigilar; la prueba lo atrapó (esperaba 1250, obtuvo 1205) y también el reto `.5` → 50:
-
-![Error atrapado por la prueba](captura/02_error.png)
+que el manual pide vigilar; la prueba lo atrapó (esperaba 1250, obtuvo 1205) y también el reto `.5` → 50.
 
 **Corrección:** rellenar a dos dígitos antes de convertir:
 
@@ -69,17 +65,15 @@ final c = int.tryParse(partes[1].padRight(2, '0').substring(0, 2));   // ✅ "5"
 
 ### 3. 🔵 REFACTOR — limpiar sin romper nada
 
-Con las pruebas en verde se ordenó el código y `flutter analyze` quedó sin avisos:
-
-![Analyze limpio](captura/04_analyze_limpio.png)
+Con las pruebas en verde se ordenó el código y `flutter analyze` quedó sin avisos.
 
 ### 4. 🟢 VERDE — las 33 pruebas pasan
 
-![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
+Las 33 pruebas del proyecto pasan tras completar el ciclo de desarrollo y correcciones.
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](captura/06_build_apk.png)
+El APK de liberación se compila en modo `release` para `android-arm64`.
 
 ---
 
@@ -141,4 +135,3 @@ flutter run
 
 Los datos viven en un archivo SQLite dentro del teléfono: si cierras la app, siguen ahí. Para empezar de cero,
 desinstala la app.
-
