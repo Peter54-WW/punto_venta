@@ -79,7 +79,7 @@ Con las pruebas en verde se ordenó el código y `flutter analyze` quedó sin av
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](capturas/06_build_apk.png)
+![Compilación del APK](captura/06_build_apk.png)
 
 ---
 
